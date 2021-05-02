@@ -4,4 +4,5 @@ both = python & java
 print(both)
 onlypython = python - java
 print(onlypython)
-
+onlyjava = java - python
+print(onlyjava)
