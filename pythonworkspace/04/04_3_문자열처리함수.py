@@ -14,4 +14,4 @@ print(python.find("Java")) # 못 찾으면 -1 반환 / 찾으면 0
 #print(python.index("Java")) # 못 찾으면 오류 -> 다음 줄 부터 실행 안함
 print("hi")
 
-print(python.count("n"))
+print(python.count("n")) 
