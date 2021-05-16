@@ -22,7 +22,6 @@ class AttackUnit(Unit):
             print("{0} : 파괴되었습니다.".format(self.name))
 # 메딕 : 의무병
 
-
 # 파이어뱃 : 공격 유닛, 화염방사기.
 firebat1 = AttackUnit("파이어뱃", 50, 16)
 firebat1.attack("5시")
