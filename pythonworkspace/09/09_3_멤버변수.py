@@ -19,6 +19,4 @@ wraith2 = Unit("뻬앗은 레이스", 80, 5)
 wraith2.clocking = True
 
 if wraith2.clocking == True:
-    print("{0} 는 현재 클로킹 상태입니다.") 
-
-    
+    print("{0} 는 현재 클로킹 상태입니다.".format(wraith2.name))
