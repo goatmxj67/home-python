@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		console.log('파이: ' + Math.PI);
+		console.log('제곱: ' + Math.pow(2, 3));
+		console.log('절대값: ' + Math.abs(-3));
+		console.log('최대값: ' + Math.max(10, 20, 30, 40, 50));
+		console.log('최소값: ' + Math.min(10, 20, 30, 40, 50));
+		console.log('루트: ' + Math.sqrt(25));
+		console.log('반올림: ' + Math.round(1.5));  // 정수로 반올림
+		console.log('올림: ' + Math.ceil(1.5));  // 정수로 올림
+		console.log('내림: ' + Math.floor(1.5));  // 정수로 내림
+		console.log('절사: ' + Math.trunc(1.5));  // 정수로 절사
+		console.log('난수: ' + Math.random());  // 0 <= 난수 < 1
+	</script>
+	<script>
+		// 반올림, 올림, 내림, 절사를 자릿수 지정이 가능하도록 함수 구현하기
+		// 1. 소수2자리 반올림: Math.round(1.456 * 100) / 100
+		// 2. 소수1자리 반올림: Math.round(1.456 * 10) / 10
+		// 3. 소수0자리 반올림: Math.round(1.456 * 1) / 1
+		function myRound(n, digit) {
+			digit || (digit = 0);  // digit에 전달되는 값이 없으면 0으로 초기화한다.(디폴트)
+			return Math.round(n * Math.pow(10, digit)) / Math.pow(10, digit);
+		}
+		console.log(myRound(45678.45678, 3));  // 45678.457
+		console.log(myRound(45678.45678, 2));  // 45678.46
+		console.log(myRound(45678.45678, 1));  // 45678.5
+		console.log(myRound(45678.45678, 0));  // 45678
+		console.log(myRound(45678.45678));     // 45678
+		console.log(myRound(45678.45678, -1));  // 45680
+		console.log(myRound(45678.45678, -2));  // 45700
+		console.log(myRound(45678.45678, -3));  // 46000
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>
