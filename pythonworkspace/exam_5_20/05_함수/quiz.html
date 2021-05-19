@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		#rainbow {
+			width: 500px;
+			height: 500px;
+			text-align: center;
+			line-height: 500px;
+			font-size: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="rainbow"></div>
+	<script>
+		var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'violet'];
+		var contents = ['빨', '주', '노', '초', '파', '남', '보'];
+		var i = 0;
+		function rainbow() {
+			document.getElementById('rainbow').style.backgroundColor = colors[i];
+			document.getElementById('rainbow').textContent = contents[i];
+			i++;
+			i %= 7;
+			setTimeout(rainbow, 500);
+		}
+		rainbow();
+	</script>
+</body>
+</html>
