@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<form name="f" action="index.html">	
+		<input type="text" name="q">
+		<br><br>
+		<button>검색</button>
+	</form>
+	<script>
+		var f = document.forms.f;
+		var q = f.q;
+		f.addEventListener('submit', function(event){
+			if (q.value == '') {
+				alert('검색어를 입력하세요.');
+				q.focus();
+				event.preventDefault();
+				return false;				
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		onload = function(){
+			
+			var chkAll = document.getElementById('chk_all');
+			var chks = document.getElementsByClassName('chk');
+			
+			// 1. 전체 선택을 클릭했을 때
+			chkAll.addEventListener('click', function(){
+				for (let i = 0; i < chks.length; i++) {
+					chks[i].checked = chkAll.checked;
+				}
+			});
+			
+			// 2. 개별 선택을 클릭했을 때
+			for (let i = 0; i < chks.length; i++) {
+				chks[i].addEventListener('click', function(){
+					// 하나라도 체크 상태가 변하면 모든 체크 상태를 확인해 봐야 한다.
+					for (let j = 0; j < chks.length; j++) {
+						if (chks[j].checked == false) {
+							chkAll.checked = false;
+							return;  // click 이벤트의 리스너(익명 함수) 종료
+						}
+					}
+					// 모두 체크되어 있는 경우 for(let j = 0; j < chks.length; j++) {} 루프를 모두 돌고
+					// 여기로 온다.
+					chkAll.checked = true;
+				});
+			}
+		}
+	</script>
+</head>
+<body>
+	
+	<input type="checkbox" id="chk_all">
+	<label for="chk_all">모두 동의합니다.</label>
+	<br><br><br>
+	<input type="checkbox" id="service" class="chk">
+	<label for="service">네이버 이용약관 동의</label>
+	<br>
+	<input type="checkbox" id="privacy" class="chk">
+	<label for="privacy">개인정보 수집 동의</label>
+	<br>
+	<input type="checkbox" id="location" class="chk">
+	<label for="location">위치정보 이용약관 동의</label>
+	<br>
+	<input type="checkbox" id="promotion" class="chk">
+	<label for="promotion">프로모션 정보 수신 동의</label>
+	<br>
+	
+</body>
+</html>
