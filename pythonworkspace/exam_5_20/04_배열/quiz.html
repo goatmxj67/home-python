@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<ul>
+		<li>라면</li>
+		<li>우동</li>
+		<li>김밥</li>
+		<li>튀김</li>
+		<li>순대</li>		
+	</ul>
+	<script>
+		// 입력 받은 메뉴를 삭제하자.
+		var deleteMenu = prompt('삭제할 메뉴를 입력하세요.');
+		var liList = document.getElementsByTagName('li');
+		// console.log(liList);
+		for (let i = 0; i < liList.length; i++) {
+			if (liList[i].textContent == deleteMenu) {
+				document.getElementsByTagName('ul')[0].removeChild(liList[i]);
+				alert(deleteMenu + '가 삭제되었습니다.');
+				break;
+			}
+		}
+	</script>
+</body>
+</html>
