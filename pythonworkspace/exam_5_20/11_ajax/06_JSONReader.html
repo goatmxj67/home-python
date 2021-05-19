@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		onload = function(){
+			document.getElementById('get_btn').addEventListener('click', function(){
+				getCar();
+			});
+			function getCar() {
+				var request = new XMLHttpRequest();
+				request.open('get', 'data.json', true);
+				request.send();
+				request.onreadystatechange = function(){
+					if (request.readyState == 4 && request.status == 200) {
+						// ajax 통신으로 받아온 JSON 데이터는 string이다.
+						// 객체(object)로 바꿔야 한다.
+						var resText = JSON.parse(request.responseText);  // JSON.parse() : string -> JSON(object)
+						console.log(resText);
+						console.log(typeof resText);
+						/*
+							resText = {
+								"model": "520d",
+								"price": 7600,
+								"mDate": "2021-03-05",
+								"company": {
+									"name": "bmw",
+									"country": "germany"
+								},
+								"option": [
+									"HUD",
+									"Advanced Cruise",
+									"AutoHold"
+								]
+							}
+						*/
+						var ul = document.getElementById('receive');
+						var li = document.createElement('li');
+						li.textContent = resText.model;
+						ul.appendChild(li);
+						var li = document.createElement('li');
+						li.textContent = resText.price;
+						ul.appendChild(li);
+						var li = document.createElement('li');
+						li.textContent = resText.mDate;
+						ul.appendChild(li);
+						var li = document.createElement('li');
+						// li.textContent = resText.company.name + ', ' + resText.company.country;
+						var company = resText.company;  // company = {"name": "bmw", "country": "germany"}
+						var result = '';
+						for (let p in company) {  // p에 "name"과 "country"가 순서대로 전달된다.
+							// company.p  : company."name"  company."country" 와 같이 되므로 사용이 불가
+							// company[p] : company["name"] company["country"] 와 같이 사용한다.
+							result += company[p] + '&nbsp;';
+						}
+						li.innerHTML = result;
+						ul.appendChild(li);
+						var li = document.createElement('li');
+						var option = resText.option;  // option = ["HUD","Advanced Cruise","AutoHold"]
+						var result = '';
+						for (let i = 0; i < option.length; i++) {
+							result += option[i] + ' ';
+						}
+						li.textContent = result;
+						ul.appendChild(li);
+						
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="자동차 정보 가져오기" id="get_btn">
+	<br><br>
+	<ul id="receive">
+	
+	</ul>
+</body>
+</html>

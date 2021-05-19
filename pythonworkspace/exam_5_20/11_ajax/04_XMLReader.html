@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		onload = function(){
+			var request = new XMLHttpRequest();
+			request.open('get', 'person.xml', true);
+			request.send();
+			request.onreadystatechange = function(){
+				if (request.readyState == 4 && request.status == 200) {
+					// 서버의 응답 xml 데이터는 responseXML이다.
+					var resXML = request.responseXML;
+					var names = resXML.getElementsByTagName('name');
+					// names : [<name>제시카</name>]
+					var ages = resXML.getElementsByTagName('age');
+					// ages : [<age>30</age>]
+					var addresses = resXML.getElementsByTagName('address');
+					// addresses : [<address>서울시 마포구</address>]
+					var tels = resXML.getElementsByTagName('tel');
+					// tels : [<tel>010-1234-5678</tel>]
+					
+					var ul = document.createElement('ul');
+					document.getElementById('receive').appendChild(ul);
+					
+					var li = document.createElement('li');
+					li.textContent = names[0].textContent;
+					ul.appendChild(li);
+					
+					var li = document.createElement('li');
+					li.textContent = ages[0].textContent;
+					ul.appendChild(li);
+					
+					var li = document.createElement('li');
+					li.textContent = addresses[0].textContent;
+					ul.appendChild(li);
+					
+					var li = document.createElement('li');
+					li.textContent = tels[0].textContent;
+					ul.appendChild(li);
+					
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="receive">
+	</div>
+</body>
+</html>
