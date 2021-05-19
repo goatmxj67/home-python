@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+		table, td {
+			border: 1px solid gray;		
+		}
+		td {
+			padding: 5px 3px;
+		}
+		.even {
+			background-color: beige;
+		}
+	</style>
+</head>
+<body>
+	<div id="practice1"></div>
+	<script>
+		// 정수를 입력 받아서 입력 받은 구구단 테이블 출력하기
+		var dan = Number(prompt('몇 단을 출력할까요?'))
+		var table = document.createElement('table');
+		if (dan % 2 == 0) {
+			table.setAttribute('class', 'even');
+		}
+		var tbody = document.createElement('tbody');
+		table.appendChild(tbody);
+		for (let n = 1; n <= 9; n++) {
+			let tr = document.createElement('tr');
+			let td1 = document.createElement('td');
+			td1.textContent = dan;
+			tr.appendChild(td1);
+			let td2 = document.createElement('td');
+			td2.textContent = 'x';
+			tr.appendChild(td2);
+			let td3 = document.createElement('td');
+			td3.textContent = n;
+			tr.appendChild(td3);
+			let td4 = document.createElement('td');
+			td4.textContent = '=';
+			tr.appendChild(td4);
+			let td5 = document.createElement('td');
+			td5.textContent = (dan * n);
+			tr.appendChild(td5);
+			tbody.appendChild(tr);
+		}
+		document.getElementById('practice1').appendChild(table);
+	</script>
+	<div id="practice2"></div>
+	<script type="text/javascript">
+		// 전체 구구단 출력하기
+		var table = document.createElement('table');
+		var tbody = document.createElement('tbody');
+		table.appendChild(tbody);
+		for (let n = 1; n <= 9; n++) {
+			let tr = document.createElement('tr');
+			for (let dan = 2; dan <= 9; dan++) {
+				let td = document.createElement('td');
+				td.textContent = (dan + 'x' + n + '=' + (dan * n));
+				tr.appendChild(td);
+			}
+			tbody.appendChild(tr);
+		}
+		document.getElementById('practice2').appendChild(table);
+	</script>
+</body>
+</html>
