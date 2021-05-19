@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<!--
+		submit
+		폼 내부의 모든 입력 요소들을 폼의 action 속성에 지정해 둔 곳으로 보내는 것
+	-->
+	<form id="form" name="f" action="index.html">
+		<input type="text" id="query" name="q" value="기본값">
+		<br><br>
+		<button>검색</button>  <!-- button 태그 역할 : submit -->
+	</form>
+	
+	<script>
+		// 1. <form id="form"><input id="query">
+		//    document.getElementById('form')
+		var form = document.getElementById('form');
+		var query = document.getElementById('query');
+		
+		// 1) 고전 이벤트
+		/*
+		form.onsubmit = function(){
+			
+		}
+		*/
+		// 2) 표준 이벤트
+		form.addEventListener('submit', function(event){
+			// value 속성값 알아내기
+			// 1) query.getAttribute('value')
+			// 2) query.value
+			// alert(query.value);
+			console.log(event);
+			if (query.value == '') {
+				alert('검색어를 입력하세요.');
+				query.focus();  // 포커스 : 커서를 옮겨준다.
+				event.preventDefault();  // submit의 기본 동작을 막는다.
+				return false;
+			}
+		});
+		
+		// 2. <form name="f"><input name="q">
+		//    1) document.forms.f
+		//    2) document.forms['f']
+		// var form2 = document.forms.f;
+		// var q = form2.q;  // var q = form2['q'];
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		#container {
+			margin: 0 auto;
+			width: 640px;
+			border: 1px solid black;
+		}
+		#image-box {
+			padding: 10px;
+			width: 100%;
+		}
+		#image {
+			width: 100%;
+			height: 420px;
+		}
+		#nav-box {
+			margin: 0 auto;
+			width: 120px;
+			display: flex;
+			justify-content: space-between;
+		}
+		#prev, #image-no, #next {
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+		}
+		#prev:active, #next:active {
+			color: orange;
+		}
+		#prev:hover, #next:hover {
+			cursor: pointer;
+		}
+	</style>
+	<script>
+		onload = function(){
+			
+			var images = ['apple.jpg', 'cat.jpg', 'dog.jpg', 'eagle.jpg', 'frog.jpg', 'lion.jpg', 'hooray.jpg', 'hedgehog.jpg', 'vase.jpg'];
+			var image_idx = 0;
+			
+			var image_no = document.getElementById('image-no');
+			function changeImageNo() {
+				image_no.textContent = (image_idx + 1) + ' / ' + images.length;				
+			}
+			changeImageNo();  // 페이지 로드할 때 번호 표시를 위해서
+			
+			var prev = document.getElementById('prev');
+			var next = document.getElementById('next');
+			var image = document.getElementById('image');
+			prev.addEventListener('click', function(){
+				changeImage(-1);
+			});
+			next.addEventListener('click', function(){
+				changeImage(1);
+			});
+			function changeImage(n) {
+				image_idx += n;
+				if ( image_idx == images.length ) {
+					image_idx = 0;
+				}
+				if ( image_idx < 0 ) {
+					image_idx = images.length - 1;
+				}
+				image.setAttribute('src', '../images/' + images[image_idx]);
+				changeImageNo();
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<!-- 이미지 -->
+		<div id="image-box">
+			<img src="../images/apple.jpg" id="image">
+		</div>
+		<!-- 번호 -->
+		<div id="nav-box">
+			<div id="prev"><i class="fas fa-backward"></i></div>
+			<div id="image-no"></div>
+			<div id="next"><i class="fas fa-forward"></i></div>
+		</div>
+	</div>
+</body>
+</html>

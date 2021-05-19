@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		onload = function(){
+			
+			var answer = document.getElementById('answer');
+			var btn = document.getElementById('btn');
+			
+			// 정답을 안 보여주는 상태
+			function hide() {
+				btn.setAttribute('value', '정답 보기');
+				answer.style.visibility = 'hidden';
+			}
+			hide();  // 페이지 로드 시 hide() 실행
+			
+			// 정답을 보여주는 상태
+			function show() {
+				btn.setAttribute('value', '정답 숨기기');
+				answer.style.visibility = 'visible';
+			}
+			
+			// 이벤트리스너
+			function f() {
+				if (btn.getAttribute('value') == '정답 보기') {
+					show();
+				} else {
+					hide();
+				}
+			}
+			// 표준 이벤트
+			btn.addEventListener('click', f);
+			
+		}
+	</script>
+</head>
+<body>
+	<h3>다음 중 존재하지 않는 태그는?</h3>
+	<ol>
+		<li>div</li>
+		<li>p</li>
+		<li>mother</li>
+		<li>ul</li>
+	</ol>
+	정답 보기 : [ <span id="answer">3</span> ]&nbsp;&nbsp;&nbsp;
+	<input id="btn" type="button">
+</body>
+</html>
