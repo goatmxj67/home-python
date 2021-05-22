@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>테이블</title>
+</head>
+<body>
+    <!-- 테이블 : table 태그 -->
+    <!--
+        table 기본 구성
+        <table> 태그 하위에 : 테이블
+        <tr> 태그 하위에    : 행
+        <td> 태그          : 열
+    -->
+    <table border="1">  <!-- border 속성 : 테두리 두께. CSS로 대치해야 함. -->
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>#</td>
+            <td>0</td>
+            <td>*</td>
+        </tr>
+    </table>
+    
+    <!--
+        <table> 태그 하위에
+            <thead>
+            <tbody>
+            <tfoot> 태그가 존재한다.
+        <tbody> 태그는 무조건 추가된다.
+        <thead>, <tbody>, <tfoot> 태그는 작성 순서에 상관 없이
+        <thead> -> <tbody> -> <tfoot> 순서로 작성된다.
+    -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제품명</th>
+                <th>가격</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>냉장고</td>
+                <td>2,000,000원</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>세탁기</td>
+                <td>1,000,000원</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <!--
+        셀 병합
+        1. td 태그의 속성으로 처리한다.
+        2. 가로로 병합 : colspan 속성 (column : 열 병합)
+        3. 세로로 병합 : rowspan 속성 (row : 행 병합)
+    -->
+    <h3>좌우 셀 병합</h3>
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>자두</td>
+                <td>짱구</td>
+                <td>스폰지밥</td>
+            </tr>
+            <tr>
+                <td colspan="3">날아라 슈퍼보드!</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>상하 셀 병합</h3>
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>브레드</td>
+                <td rowspan="3">윌크</td>
+            </tr>
+            <tr>
+                <td>소세지</td>
+            </tr>
+            <tr>
+                <td>까망베르치즈</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>
