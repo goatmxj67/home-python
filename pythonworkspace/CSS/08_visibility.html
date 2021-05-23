@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>display</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+            margin-right: 20px;
+        }
+        span > img {
+            /* 화면에서 숨긴다. 영역은 차지하고 있다. */
+            visibility: hidden;
+        }
+        span:hover > img {
+            /* 마우스를 대면 보여준다. */
+            /* 이미지에 마우스를 대는 것이 불가능하다. 안 보이니까. */
+            /* 이미지의 부모 요소에 마우스를 댄다. */
+            visibility: visible;
+        }
+        
+        .answer {
+            visibility: hidden;
+        }
+        #outer:hover > .answer {
+            visibility: visible;
+        }
+        #view-answer:hover + .answer {
+            visibility: visible;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    
+    <h3>이미지는 인라인 요소이다.</h3>
+    <img alt="강아지" src="../images/dog.jpg">
+    <span><img alt="독수리" src="../images/eagle.jpg"></span>
+    <img alt="고슴도치" src="../images/hedgehog.jpg">
+    
+    <br><br>
+    
+    <h3>다음 중 블록레벨이 아닌 태그는?</h3>
+	<ol>
+		<li>div</li>
+		<li>a</li>
+		<li>p</li>
+		<li>ul</li>
+	</ol>
+	정답: [ <span id="outer"><span class="answer">2</span></span> ]<br>
+    <span id="view-answer">정답보기</span>&nbsp;&nbsp;<span class="answer">2</span>
+    
+</body>
+</html>
