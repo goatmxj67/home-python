@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>z-index</title>
+    <style>
+        /*
+            앞 뒤 순서 조정 속성: z-index
+            1. 정수값을 가진다.
+            2. 상대적으로 높은 값이 앞으로 나오고, 낮은 값이 뒤로 간다.
+            3. position이 relative, absolute, fixed인 경우에 적용된다.
+            4. 같은 depth를 가진 요소끼리 비교한다.
+               (부모-자식은 비교가 안 되고, 형제끼리 비교가 된다.)
+        */
+        .wrap {
+            width: 400px;
+            height: 400px;
+            background-color: beige;
+            position: relative;
+            z-index: 999999;  /* .wrap은 box1,2의 부모이므로 box1,2와 z-index 비교가 되지 않는다. */
+        }
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;  /* 낮은 값을 가지므로 뒤에 표시된다. */
+        }
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top: 110px;
+            left: 110px;
+            z-index: 10; /* 높은 값을 가지므로 앞에 표시된다. */
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div id="box1"></div>
+        <div id="box2"></div>
+    </div>
+</body>
+</html>
