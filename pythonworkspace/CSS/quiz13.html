@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>quiz13</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @media screen and (orientation: landscape) {
+            #gnb > ul {
+                list-style-type: none;
+                padding: 0;
+                overflow: hidden;
+            }
+            #gnb > ul > li {
+                float: left;
+                padding: 30px;
+                color: lightgray;
+            }
+            #gnb > ul > li:hover {
+                color: darkgray;
+            }
+            #short-gnb {
+                display: none;
+            }
+        }
+        @media screen and (orientation: portrait) {
+            #gnb {
+                display: none;
+            }
+            #short-gnb {
+                padding: 30px;
+                color: darkgray;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="gnb">
+            <ul>
+                <li>Start</li>
+                <li>Icons</li>
+                <li>Docs</li>
+                <li>Support</li>
+                <li>Plans</li>
+                <li>Blog</li>
+            </ul>
+        </div>
+        <div id="short-gnb">
+            <i class="fas fa-bars fa-3x"></i>
+        </div>
+    </div>
+</body>
+</html>
