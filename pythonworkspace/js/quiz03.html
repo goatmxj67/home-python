@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		
+		onload = function(){
+			// 난수 만들기 버튼을 클릭하면 0~9 사이의 난수가 출력된다.
+			document.getElementById('random-btn').addEventListener('click', function(){
+				document.getElementById('random-box').textContent = parseInt(Math.random() * 10);
+			});
+			// 이미지 변경하기 버튼을 클릭하면 images 디렉터리의 이미지가 임의로 선택되서 나타난다.
+			var images = ['apple.jpg', 'cat.jpg', 'dog.jpg', 'eagle.jpg', 'frog.jpg', 'lion.jpg', 'hooray.jpg', 'hedgehog.jpg', 'vase.jpg', 'wall.jpg'];
+			document.getElementById('image-btn').addEventListener('click', ()=>{
+				var image_box = document.getElementById('image-box');
+				var image_idx = parseInt(Math.random() * images.length);  // images 배열의 인덱스 중 하나를 임의로 생성
+				image_box.style.backgroundImage = 'url("../images/' + images[image_idx] + '")';
+			});
+			// 이미지 변경하기 버튼을 클릭하면 images 디렉터리의 이미지가 순서대로 나타난다.
+			// <img> 태그를 만들어서 넣는 방법으로 접근해 보자.
+			var image_box2 = document.getElementById('image-box2');
+			var image_idx = 0;
+			var img = document.createElement('img'); 
+			document.getElementById('image-btn2').addEventListener('click', ()=>{
+				img.setAttribute('src', '../images/' + images[image_idx++]);
+				// img.src = '../images/' + images[image_idx++];
+				image_idx %= images.length;
+				image_box2.appendChild(img);
+			});
+		}
+		
+	</script>
+	<style>
+		#image-box {
+			width: 300px;
+			height: 300px;
+			background-image: url("../images/apple.jpg");
+			background-size: 300px 300px;
+			border-radius: 20px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="난수 만들기" id="random-btn">
+	<div id="random-box"></div>
+	<input type="button" value="이미지 변경하기" id="image-btn">
+	<div id="image-box"></div>
+	<input type="button" value="이미지 변경하기2" id="image-btn2">
+	<div id="image-box2"></div>
+</body>
+</html>
